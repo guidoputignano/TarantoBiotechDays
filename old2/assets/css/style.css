@@ -1,0 +1,379 @@
+header {
+  z-index: 100;
+}
+.navbar {
+  background-color: var(--bg-accent);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  z-index: 1000;
+  transition: all 0.5s ease;
+  @media (max-width: 700px) {
+    margin: auto;
+  }
+}
+
+.navbar .navitem {
+  font-size: 1.6em;
+  padding: 1em;
+  transition: all 0.5s ease;
+}
+
+.navbar .navitem:hover {
+  color: var(--backlight-accent);
+  box-shadow: var(--backlight-accent) 0px 4px 8px;
+  clip-path: inset(2px 2px -10px 2px);
+}
+
+.navbar .navlogo {
+  margin-right: auto;
+}
+
+.navbar .navlogo img {
+  width: auto;
+  height: 4em;
+  padding: 0em;
+  margin: 0.5em;
+}
+
+.navbar a.icon {
+  font-size: 3em;
+  padding: 0.3em;
+  overflow: hidden;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a.navitem {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .navbar .navlogo img {
+    width: auto;
+    height: 5em;
+    padding: 0em;
+  }
+  .navbar .navitem:hover {
+    color: var(--backlight-accent);
+    box-shadow: none;
+  }
+  .navbar.responsive {
+    flex-direction: column;
+    padding-bottom: 100px;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+  }
+  .navbar.responsive .navicon {
+    position: absolute;
+    left: 0;
+  }
+  .navbar.responsive a.navitem {display: block;}
+
+
+}
+
+.speakers {
+  display: flex;
+  align-items: top;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 5px;
+  height: fit-content;
+}
+
+.speaker .picture {
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.speaker .picture img {
+
+  transition: transform 0.5s ease;
+}
+
+.speaker:hover .picture img {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.choose-plan {
+    background: linear-gradient(var(--bg-alt), rgba(255,255,255, 0.5)), url("/assets/Images/Castello-Tinazzi.jpg");
+}
+.plans {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.plan {
+  width: 350px;
+  padding: 1em;
+  padding-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
+  box-shadow: var(--backlight) 0px 1px 4px;
+  border-radius: 1em;
+  transition: all 0.5s ease;
+  margin-block: 25px;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--backlight-accent) 0px 8px 24px;
+}
+
+.plan .icon {
+  margin: auto;
+  font-size: 3em;
+}
+
+.plan .price {
+  font-size: 1.5em;
+  display: inline;
+}
+.plan .button {
+  display: inline;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  margin-left: auto;
+}
+
+
+:root {
+  --bg-translucent: #16136288;
+  --bg: #161362;
+  --bg-alt: white;
+  --bg-accent: #120f4e;
+  --bg-alt-accent: #efefef;
+  --button: #e7015e;
+  --button-accent: #ff007a;
+  --backlight: #e7015e88;
+  --backlight-accent: #ff007a88;
+
+  --size: 50px; /* size of the cut */
+  --gap: 10px;  /* the gap */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Fauna One', serif;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  overflow-x: hidden;
+  max-width: 100vw;
+  z-index: -100;
+}
+.standard {
+  background-color: var(--bg);
+  color: white;
+}
+.alt {
+  background-color: var(--bg-alt);
+  color: black;
+}
+
+.button {
+  color: white;
+  background-color: var(--button);
+  width: fit-content;
+  cursor: pointer;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  @media (max-width: 700px) {
+    font-size: 1.2em;
+  }
+}
+
+.button:hover {
+  background-color: var(--button-accent);
+}
+
+.overlay {
+  opacity: 0.0;
+  width: 100vw;
+  height: 1000vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 990;
+  transform: translate(-50%, -50%);
+  background-color: var(--backlight);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+.overlay.active {
+  opacity: 0.5;
+  pointer-events: all;
+}
+.expanded {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--bg-accent);
+  width: 0px;
+  height: 0px;
+  max-height: 80vh;
+  max-width: 80vw;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  z-index: 1000;
+  align-items: top;
+  justify-content: flex-start;
+  transform: translate(-50%, -45%);
+  flex-direction: column;
+  padding: 0%;
+  transition: top 0.5s ease;
+}
+.expanded .picture {
+  position: relative;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 400px !important;
+  display: flexbox;
+}
+.expanded p {
+  margin-inline: 1em;
+  min-width: 400px;
+  height: 400px;
+  display: flexbox;
+}
+.expanded a {
+  font-size: 2em;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+}
+.expandable.active .expanded {
+  top: 50%;
+  width: 500px;
+  height: 600px;
+}
+.picture {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.picture img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.content {
+  max-width: 1200px;
+  margin: auto;
+}
+section {
+  width: 100%;
+  position: relative;
+  padding-block: 50px;
+  background-color: var(--bg);
+}
+
+.separator {
+  background: linear-gradient(var(--bg), var(--button), var(--bg-alt));
+}
+.top {
+  height: 50px;
+  background-color: var(--bg);
+  clip-path: polygon(0 0,100% 0,100% 100%,0 calc(100% - var(--size)));
+}
+.bottom {
+  height: 50px;
+  background-color: var(--bg-alt);
+  clip-path: polygon(0 0,100% 50px,100% 100%,0 100%);
+  margin-top: -45px;
+}
+.separator.alt {
+  background: linear-gradient(var(--bg-alt), var(--button), var(--bg));
+}
+.alt .top {
+  background-color: var(--bg-alt);
+  clip-path: polygon(0 0,100% 0,100% calc(100% - 50px),0 100%);
+}
+.alt .bottom {
+  background-color: var(--bg);
+  clip-path: polygon(0 50px,100% 0,100% 100%,0 100%);
+  margin-top: -45px;
+}
+h1, h2, h3, h4 {
+  font-family: Cinzel, serif;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 5em;
+  @media (max-width: 700px) {
+    font-size: 3em;
+  }
+}
+h1.right {
+text-align: right;
+}
+h2 {
+  font-size: 2em;
+  @media (max-width: 700px) {
+    font-size: 1.5em;
+  }
+}
+h3 {
+  font-size: 2.5em;
+  text-align: center;
+  @media (max-width: 700px) {
+    font-size: 2em;
+  }
+}
+
+h4 {
+  margin: 5px;
+  font-size: 2em;
+  text-align: center;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+.sponsors::-webkit-scrollbar {
+  display: none;
+}
+
+strong {
+  color: var(--button-accent);
+}
+
+iframe {
+  border: none;
+  padding: none;
+  margin: none;
+}

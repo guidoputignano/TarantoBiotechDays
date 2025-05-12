@@ -1,0 +1,28 @@
+.masonry {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    flex-wrap: wrap;
+  }
+
+  .masonry .column {
+    display: inline-flexbox;
+    flex-direction: column;
+    justify-content: stretch;
+    margin: 5px;
+    width: calc(100vw / 3 - 10px * 2);
+  }
+
+  .masonry .column .picture {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .masonry .column .picture img {
+    transition: transform 0.5s ease;
+  }
+
+  .masonry .column .picture:hover img {
+    transform: translate(-50%, -50%) scale(1.2);
+  }

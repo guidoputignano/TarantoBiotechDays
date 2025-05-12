@@ -1,0 +1,116 @@
+input {
+    display: none;
+  }
+  .tab-title {
+    padding: 1em;
+  }
+  .tab-title.active {
+    background-color: var(--button-accent);
+  }
+  .tab-titles {
+    display: flex;
+    justify-content: left;
+    align-items: stretch;
+  }
+  .tab-titles.right {
+    justify-content: right;
+  }
+  .tabs {
+    display: flex;
+  }
+  .tab {
+    position: absolute;
+    left: -200vw;
+    display: flexbox;
+    height: 0%;
+    opacity: 0;
+    transition: left 0.5s ease-out, opacity 0.5s ease-out;
+    margin: auto;
+  }
+  .tab.active {
+    position: relative;
+    left: 0vw;
+    opacity: 1;
+    height: min-content;
+    width: 100%;
+  }
+
+  .timeline {
+    box-sizing: border-box;
+
+  }
+  .timeline ul {
+    list-style-type: none;
+    border-left: 2px solid var(--bg);
+    padding: 10px 5px;
+  }
+  .timeline ul li {
+    position: relative;
+    transition: 0.5s;
+    margin-block: 20px;
+  }
+  .timeline ul li span {
+    display: inline-block;
+    background-color: var(--button);
+    color: var(--bg-alt);
+    border-radius: 25px;
+    padding: 5px 8px;
+    font-size: 1em;
+    text-align: center;
+  }
+  .timeline ul li .cont {
+    width: 100%;
+    transition: all 0.5s ease;
+    position: relative;
+    padding-block: 20px;
+    padding-inline: 10px;
+    overflow: hidden;
+  }
+  .timeline ul li .cont .text {
+    padding: 20px;
+    margin: 20px;
+  }
+  .timeline ul li .cont .picture {
+    mask-image: linear-gradient(-75deg, rgba(0,0,0,1), rgba(0,0,0,0) 90%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+  }
+  .timeline ul li .cont .picture:hover {
+    left: 60%;
+  }
+  
+  .timeline ul li .cont .text h4 {
+    width: fit-content;
+  }
+  .timeline ul li:before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: var(--bg-accent);
+    border-radius: 50%;
+    left: -11px;
+    top: 28px;
+    transition: 0.5s;
+  }
+  .timeline ul li:hover {
+  }
+  .timeline ul li:hover:before {
+    background-color: var(--button);
+    box-shadow: 0px 0px 10px 2px var(--button);
+  }
+  @media (max-width: 300px) {
+    .timeline {
+      width: 100%;
+      padding: 30px 5px 30px 10px;
+    }
+    .timeline ul li .content h3 {
+      color: #34ace0;
+      font-size: 15px;
+    }
+  }
